@@ -4,9 +4,9 @@ const { Provider, Consumer: AuthConsumer } = React.createContext('');
 
 class AuthProvider extends PureComponent {
   state = {
-    email: '',
+    email: 'sass',
     authorizeError: '',
-    isAuthorized: false
+    isAuthorized: true
   }
 
   authorize(email, password) {
@@ -34,12 +34,12 @@ class AuthProvider extends PureComponent {
       isAuthorized: false,
       authorizeError: false,
       authorize: false,
-      logout: false
+      logout: this.logout
     }
   }
   render() {
     const { children } = this.props;
-    return <Provider>{children}</Provider>;
+    return <Provider value={this.state}>{children}</Provider>;
   }
 }
 
