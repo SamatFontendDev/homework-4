@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import './Layout.css';
 import Header from '../Header/Header'
+import LoginForm from '../LoginForm/LoginForm'
 
 class Layout extends PureComponent {
   render() {
     return (
       <div className="main">
         <Header/>
+        <LoginForm/>
       </div>
     );
   }
