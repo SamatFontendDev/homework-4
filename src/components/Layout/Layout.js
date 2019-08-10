@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import './Layout.css';
 import Header from '../Header/Header'
 import LoginForm from '../LoginForm/LoginForm'
+import Footer from '../Footer/Footer';
 
 class Layout extends PureComponent {
   state = {
@@ -10,9 +11,12 @@ class Layout extends PureComponent {
 
   render() {
     return (
-      <div className="main">
-          <Header/>
-          <LoginForm/>
+      <div>
+        <Header/>
+        <div className="main">
+            <LoginForm/>
+        </div>
+        <Footer/>
       </div>
     );
   }
