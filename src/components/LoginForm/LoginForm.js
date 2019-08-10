@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import './LoginForm.css';
 import Button from '../Button';
+import { AuthConsumer } from '../../contexts/Auth';
 
 const fields = [
   {
@@ -77,4 +78,15 @@ class LoginForm extends PureComponent {
   }
 }
 
-export default LoginForm;
+export default () => (
+  <AuthConsumer>
+    {
+      ({isAuthorized, email, authorizeError, authorize}) => {
+        return(
+          <LoginForm isAuthorized={isAuthorized} email={email} authorize={authorize} authorizeError={authorizeError} />
+        )
+        
+      }
+    }
+  </AuthConsumer>
+)
