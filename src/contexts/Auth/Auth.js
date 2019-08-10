@@ -1,15 +1,16 @@
+/* eslint-disable react-perf/jsx-no-new-object-as-prop */
 import React, { PureComponent } from 'react';
 
 const { Provider, Consumer: AuthConsumer } = React.createContext('');
 
 class AuthProvider extends PureComponent {
   state = {
-    email: 'sass',
+    email: 'stu@dent.com',
     authorizeError: '',
-    isAuthorized: true
+    isAuthorized: false
   }
 
-  authorize(email, password) {
+  authorize = (email, password) => {
     if(email === 'stu@dent.com' && password === 123) {
       this.setState({
         email: email,
@@ -23,23 +24,27 @@ class AuthProvider extends PureComponent {
       })
     }
   }
-  logout() {
+  logout = () => {
     this.setState({
       isAuthorized: false
     })
   }
-  getProviderValue() {
+  getProviderValue = () => {
     return {
       email: '',
       isAuthorized: false,
       authorizeError: false,
-      authorize: false,
+      authorize: this.authorize,
       logout: this.logout
     }
   }
   render() {
     const { children } = this.props;
-    return <Provider value={this.state}>{children}</Provider>;
+    const {isAuthorized, email, authorizeError} = this.state;
+    
+    return <Provider value={{
+      isAuthorized, email, logout: this.logout, autorize: this.authorize, authorizeError
+    }}>{children}</Provider>
   }
 }
 
