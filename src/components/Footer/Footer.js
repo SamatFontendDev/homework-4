@@ -5,11 +5,18 @@ import './Footer.css';
 class Footer extends PureComponent {
   render() {
     return (
-      <footer>
-        
+      <footer className="footer">
+        <p className="header__title section-title">footer</p>
+        <p className="footer-message t-footer">Вы в этой системе гость</p>
       </footer>
     )
   }
 }
 
-export default Footer;
+export default () => (<AuthConsumer>
+  {({isAuthorized}) => 
+  isAuthorized && (
+    <Footer/>
+  )
+}
+</AuthConsumer>)
