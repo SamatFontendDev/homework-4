@@ -13,8 +13,13 @@ class Header extends PureComponent {
             <div className="header__title">HEADER</div>
             <div className="header-menu">
               <div className="header-menu__email">{email}</div>
-              <Button onClick={logout} />
-            </div>
+              <AuthConsumer>
+                {({isAuthorized}) => (
+                  isAuthorized &&
+                  <Button children={'Выйти'} onClick={logout}/>
+                )}
+              </AuthConsumer>
+              </div>
           </div>
         </header>
       );
