@@ -81,12 +81,12 @@ class LoginForm extends PureComponent {
 export default () => (
   <AuthConsumer>
     {
-      ({isAuthorized, email, authorizeError, authorize}) => {
-        return(
+      ({isAuthorized, email, authorizeError, authorize}) => 
+        (
           <LoginForm isAuthorized={isAuthorized} email={email} authorize={authorize} authorizeError={authorizeError} />
         )
         
-      }
+      
     }
   </AuthConsumer>
 )
